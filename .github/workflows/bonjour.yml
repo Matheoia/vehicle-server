@@ -4,9 +4,9 @@ on:
 jobs:
   dire_bonjour:
     runs-on: ubuntu-22.04
+    container:
+      image: ghcr.io/cicd-lectures/gitpod:latest
+      options: --user=root
     steps:
-      - uses : actions/checkout@v4 
-      - run: |
-          sudo apt-get update
-          sudo apt-get install -y cowsay
-      - run: cat README.md |cowsay
+      - uses: actions/checkout@v4
+      - run: cat README.md | cowsay
