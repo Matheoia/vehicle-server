@@ -9,4 +9,4 @@ jobs:
       - run: |
           sudo apt-get update
           sudo apt-get install -y cowsay
-      - run: cat README.md # Affiche le contenu du fichier `README.md` à la base du dépôt
+      - run: cat README.md |cowsay
