@@ -1,6 +1,6 @@
 name: vehicle server
 on:
-  - push 
+  - push  
 jobs:
   ci:
     runs-on: ubuntu-22.04 
