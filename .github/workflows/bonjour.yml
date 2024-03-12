@@ -6,5 +6,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses : actions/checkout@v4 
-      - run: ls -l # Liste les fichier du répertoire courant
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y cowsay
       - run: cat README.md # Affiche le contenu du fichier `README.md` à la base du dépôt
