@@ -1,15 +1,19 @@
-name: Bonjour
+name: vehicle server
 on:
   - push
 jobs:
-  dire_bonjour:
+  ci:
     runs-on: ubuntu-22.04 
     steps:
-      - uses: actions/checkout@v4
-      - uses: juliangruber/read-file-action@v1
-        id: readfile
-        with: 
-          path: ./README.md
-      - uses: Code-Hex/neo-cowsay-action@v1
-        with: 
-          message: "${{ steps.readfile.outputs.content }}"
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: setup go
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: './go.mod'
+      - name: check go version
+        run: go version
+      - name: Build application
+        run: make build
+      - name: List dist output
+        run: ls dist/
