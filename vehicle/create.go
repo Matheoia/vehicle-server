@@ -35,6 +35,10 @@ func (f *CreateRequest) validate() []string {
 		validationIssues = append(validationIssues, "battery level must be > 0 and <= 100")
 	}
 
+	if len(f.ShortCode) > 4 {
+		validationIssues = append(validationIssues, "short code too long")
+	}
+
 	return validationIssues
 }
 
