@@ -13,11 +13,12 @@ jobs:
           go-version-file: './go.mod'
       - name: check go version
         run: go version
-      - name: Build application
-        run: make build
-      - name: List dist output
-        run: ls dist/
       - name: run test
         run: make unit_test   
       - name: run test
         run: make integration_test
+      - name: Build application
+        run: make build
+      - name: List dist output
+        run: ls dist/
+
