@@ -3,7 +3,7 @@ POSTGRES_USER=vehicle-server
 POSTGRES_PASSWORD=secret
 POSTGRES_DB=vehicle-server
 DATABASE_URL=postgres://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@localhost:5432/$(POSTGRES_DB)
-IMAGE?=Matheoia/vehicle-server
+IMAGE?=matheoia/vehicle-server
 TAG?=dev
 
 
