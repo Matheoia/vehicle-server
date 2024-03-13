@@ -22,5 +22,15 @@ jobs:
         run: make build
       - name: Package Application
         run: make package
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          username: xxxxx
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Push if triggered by a tag
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          make release  TAG="${{github.ref_name}}"
       - name: List dist output
         run: ls dist/

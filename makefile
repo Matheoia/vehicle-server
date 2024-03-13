@@ -30,7 +30,7 @@ stop_dev_db:
 	docker container stop $(DB_CONTAINER_NAME)
 
 .PHONY: all
-all: clean unit_test integration_test build package
+all: clean unit_test integration_test build package release
 
 .PHONY: clean
 clean:
@@ -53,4 +53,10 @@ integration_test:
 
 .PHONY: package
 package:
-	docker build -t $(IMAGE):$(TAG) .
+  docker build -t $(IMAGE):$(TAG) .
+
+.PHONY: release
+release:
+	git tag $(TAG) -m "$(TAG_MESSAGE)"
+	git push $(TAG)
+	docker push $(IMAGE):$(TAG)
