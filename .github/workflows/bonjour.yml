@@ -1,25 +1,26 @@
-name: vehicle server
+name: Vehicle Server CI
 on:
   - push
   - pull_request
 jobs:
   ci:
-    runs-on: ubuntu-22.04 
+    runs-on: ubuntu-22.04
     steps:
-      - name: checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
-      - name: setup go
+      - name: Setup Go
         uses: actions/setup-go@v5
         with:
           go-version-file: './go.mod'
-      - name: check go version
+      - name: Check Go Version
         run: go version
-      - name: run test
-        run: make unit_test   
-      - name: run test
+      - name: Run Unit Tests
+        run: make unit_test
+      - name: Run Integration Tests
         run: make integration_test
       - name: Build application
         run: make build
+      - name: Package Application
+        run: make package
       - name: List dist output
         run: ls dist/
-
