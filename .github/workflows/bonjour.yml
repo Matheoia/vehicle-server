@@ -1,6 +1,6 @@
 name: vehicle server
 on:
-  - push  
+  - push
   - pull_request
 jobs:
   ci:
