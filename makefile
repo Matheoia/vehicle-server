@@ -5,7 +5,7 @@ POSTGRES_DB=vehicle-server
 DATABASE_URL=postgres://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@localhost:5432/$(POSTGRES_DB)
 
 .PHONY: dev
-dev:
+dev: dev_db
 	go run ./cmd/server \
 		-listen-address=:8080 \
 		-database-url=$(DATABASE_URL)
@@ -39,3 +39,11 @@ build:
 
 dist:
 	mkdir ./dist
+
+.PHONY: unit_test
+unit_test:
+	go test -v -cover ./...
+
+.PHONY: integration_test
+integration_test:
+	go test -v -count=1 --tags=integration ./app
